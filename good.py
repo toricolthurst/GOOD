@@ -9,8 +9,6 @@ Paper Authors: S. Hamidreza Kasaei, Ana Maria Tomé, Luís Seabra Lopes, Miguel 
 import numpy as np
 import open3d as o3d
 import random
-import copy
-import matplotlib.pyplot as plt
 
 def array_to_cloud_color(points, colors):
     cloud = o3d.geometry.PointCloud()
