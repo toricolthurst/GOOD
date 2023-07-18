@@ -10,9 +10,25 @@ import numpy as np
 import open3d as o3d
 import random
 import copy
-from scan_objects.helper_functions import *
 import matplotlib.pyplot as plt
-from scan_objects.pc_registration import execute_global_registration, execute_fast_global_registration, preprocess_point_cloud
+
+def array_to_cloud_color(points, colors):
+    cloud = o3d.geometry.PointCloud()
+
+    for i in range(points.shape[0]):
+        cloud.points.append(points[i])
+        cloud.colors.append(colors[i])
+
+    return cloud
+
+def get_bbox(array):
+    minx, maxx = np.min(array[:,0]), np.max(array[:,0])
+    miny, maxy = np.min(array[:,1]), np.max(array[:,1])
+    minz, maxz = np.min(array[:,2]), np.max(array[:,2])
+    bbox = o3d.geometry.AxisAlignedBoundingBox((minx,miny,minz),(maxx,maxy,maxz))
+    r, g, b = random.random(), random.random(), random.random()
+    bbox.color = (r, g, b)
+    return bbox, [minx,maxx, miny,maxy, minz,maxz]
 
 def pca(cloud_array):
 
