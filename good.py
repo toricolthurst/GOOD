@@ -101,7 +101,7 @@ def lrf(cloud, t):
 
     return cloud_new, center
 
-def make_descriptor(cloud, n, scanner):
+def make_descriptor(cloud, n):
 
     cloud_array = np.asarray(cloud.points)
     bbox, dims = get_bbox(cloud_array)
@@ -163,11 +163,11 @@ def make_descriptor(cloud, n, scanner):
 
     return descriptor
 
-def GOOD(cloud, n, t, scanner):
+def GOOD(cloud, n, t):
 
     cloud_array = np.asarray(cloud.points)
     new_cloud, center = lrf(cloud, t)
 
-    descriptor = make_descriptor(new_cloud, n, scanner)
+    descriptor = make_descriptor(new_cloud, n)
 
     return descriptor
