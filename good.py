@@ -163,7 +163,7 @@ def make_descriptor(cloud, n):
 
     return descriptor
 
-def GOOD(cloud, n, t):
+def GOOD(cloud, n, t=0.015):
 
     cloud_array = np.asarray(cloud.points)
     new_cloud, center = lrf(cloud, t)
